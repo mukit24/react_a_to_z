@@ -3,6 +3,7 @@ import Home from "./components/Home";
 import User from "./components/User";
 import About from "./components/About";
 import Nav from "./components/Nav";
+import Form from "./components/Form";
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
             <Route path="/" element={<Home/>}/>
             <Route path='/user' element={<User name='Mukit' age='24' />}/>
             <Route path="/about" element={<About/>}/>
+            <Route path="/form" element={<Form/>}/>
         </Routes>
         </BrowserRouter>
     </div>
