@@ -15,7 +15,11 @@ function Nav() {
                 <li>
                     <Link to='/form'>Form</Link>
                 </li>
+                <li>
+                    <Link to='/data-fetching'>Data Fetching</Link>
+                </li>
             </ul>
+            <hr/>
         </nav>
   )
 }
