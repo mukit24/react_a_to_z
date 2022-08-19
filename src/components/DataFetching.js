@@ -1,10 +1,13 @@
 import React from 'react';
 import { useEffect,useState } from 'react';
+import axios from 'axios';
 
 const DataFetching = () => {
-    const [data,setData] = useState('')
+    const [data,setData] = useState([])
     const [error,setError] = useState('')
     const [loading,setLoading] = useState(true)
+
+    const [axiosData, setaxiosData] = useState([])
 
     useEffect(() => {
         fetch(`https://jsonplaceholder.typicode.com/posts?_limit=5`)
@@ -29,6 +32,21 @@ const DataFetching = () => {
         })
     },[]);
 
+    useEffect(() => {
+        const getData = async () =>{
+            try {
+                const response = await axios.get(`https://jsonplaceholder.typicode.com/posts?_limit=10`);
+                setaxiosData(response.data);
+                console.log(response.data);
+            } catch (error) {
+                console.log(error.message)
+            } 
+        };
+        getData();
+    }, [])
+    
+    // console.log(axiosData)
+
   return (
     <div>
         <h2>Posts are:</h2>
@@ -43,6 +61,13 @@ const DataFetching = () => {
             ))
             }
         </ul>
+        <h2>Post Are: (Using Axios Library)</h2>
+        <ul>
+        {axiosData && axiosData.map(({id,title}) => (
+            <li key={id}>{title}</li>
+        ))}
+        </ul>
+        
     </div>
   )
 }
